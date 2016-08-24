@@ -1,5 +1,6 @@
 $light-blue: #29ABE2;
-$dark-blue: darken($light-blue, 20%);
+$dark-blue: darken($light-blue, 10%);
+$darker-blue: darken($light-blue, 20%);
 $sophisticated-white: #EEE;
 
 html {
@@ -13,16 +14,55 @@ html {
 		color: $sophisticated-white;
 
 		.form-container {
-			padding: 2rem;
-			background-color: $dark-blue;
+
+			h1 {
+				font-size: 300;
+				color: $sophisticated-white;
+			}
 
 			form {
 				padding: 0 5rem;
+				color: $sophisticated-white;
 
 				fieldset {
 					margin-bottom: 2rem;
+					color: $sophisticated-white;
+
+					.form-control {
+						background-color: $dark-blue;
+						color: $sophisticated-white;
+					}
+
+					.input-group-addon {
+						background-color: $darker-blue;
+						color: $sophisticated-white;
+					}
+				}
+
+				.submit-info {
+					text-align: center;
 				}
 			}
 		}
 	}
+}
+
+// Small devices (landscape phones, 544px and up)
+@media (min-width: 544px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
 }

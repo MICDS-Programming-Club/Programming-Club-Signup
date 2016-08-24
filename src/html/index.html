@@ -11,13 +11,13 @@
 	</head>
 	<body>
 		<div class="form-container">
-			<h1 class="display-3">MICDS Programming Club</h1>
+			<h1>MICDS Programming Club</h1>
 			<form>
 				<h2>Signup</h2>
 				<fieldset>
 					<legend>Email</legend>
 					<div class="input-group">
-						<input id="email" class="form-control" name="email" placeholder="Email">
+						<input id="email" class="form-control" name="email" placeholder="Email" required>
 						<span class="input-group-addon">@micds.org</span>
 					</div>
 				</fieldset>
@@ -43,11 +43,13 @@
 					</div>
 				</fieldset>
 				<button class="btn btn-success btn-lg btn-block">Submit</button>
+				<p class="submit-info">You will recieve a follow-up email and an invite to Slack.</p>
 			</form>
 		</div>
 		<script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 		<script src="/js/main.js"></script>
 	</body>
 </html>
