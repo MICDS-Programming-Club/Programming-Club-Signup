@@ -1,3 +1,28 @@
-html, body {
-	height: 100%;
+$light-blue: #29ABE2;
+$dark-blue: darken($light-blue, 20%);
+$sophisticated-white: #EEE;
+
+html {
+
+	body {
+		display: flex;
+		justify-content: center;
+		padding-top: 2.5rem;
+
+		background-color: #29ABE2;
+		color: $sophisticated-white;
+
+		.form-container {
+			padding: 2rem;
+			background-color: $dark-blue;
+
+			form {
+				padding: 0 5rem;
+
+				fieldset {
+					margin-bottom: 2rem;
+				}
+			}
+		}
+	}
 }

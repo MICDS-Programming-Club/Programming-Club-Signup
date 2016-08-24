@@ -4,7 +4,7 @@
   "description": "Signup website for MICDS Programming Club",
   "main": "src/index.js",
   "scripts": {
-	"start": "concurrently \"gulp\" \"nodemon\" ",
+    "start": "concurrently \"gulp\" \"nodemon\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "socket.io": "^1.4.8"
   },
   "devDependencies": {
+    "concurrently": "^2.2.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2"

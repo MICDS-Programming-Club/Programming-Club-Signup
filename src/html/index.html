@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
 		<title>MICDS Programming Club</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/styles.css">
 	</head>
 	<body>
-		<div class="container">
-			<form></form>
+		<div class="form-container">
+			<h1 class="display-3">MICDS Programming Club</h1>
+			<form>
+				<h2>Signup</h2>
+				<fieldset>
+					<legend>Email</legend>
+					<div class="input-group">
+						<input id="email" class="form-control" name="email" placeholder="Email">
+						<span class="input-group-addon">@micds.org</span>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>I am a:</legend>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="level" value="beginner" checked>
+							<strong>Beginner</strong> I'm just interested in programming.
+						</label>
+					</div>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="level" value="intermediate">
+							<strong>Intermediate</strong> I know the basics of programming.
+						</label>
+					</div>
+					<div class="form-check">
+						<label class="form-check-label">
+							<input type="radio" class="form-check-input" name="level" value="advanced">
+							<strong>Advanced</strong> I feel confident programming in one or more languages.
+						</label>
+					</div>
+				</fieldset>
+				<button class="btn btn-success btn-lg btn-block">Submit</button>
+			</form>
 		</div>
+		<script src="http://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+		<script src="/js/main.js"></script>
 	</body>
 </html>
