@@ -22,7 +22,7 @@ html {
 				color: $sophisticated-white;
 			}
 
-			form {
+			.signup-form {
 				padding: 0 1rem;
 				color: $sophisticated-white;
 
@@ -56,7 +56,7 @@ html {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-	html body .form-container form {
+	html body .form-container .signup-form {
 		padding: 0 5rem;
 	}
 }

@@ -1,4 +1,6 @@
 var socket = io();
+
+var form = document.getElementsByClassName('signup-form')[0];
 var $form = $('form');
 
 $form.submit(function(event) {
@@ -13,4 +15,7 @@ $form.submit(function(event) {
 
 	socket.emit('signup', formData);
 	console.log(formData);
+
+	// Reset form data for next user
+	form.reset();
 });
