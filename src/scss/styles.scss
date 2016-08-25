@@ -1,6 +1,6 @@
-$light-blue: #29ABE2;
-$dark-blue: darken($light-blue, 10%);
-$darker-blue: darken($light-blue, 20%);
+$light-blue: darken(#29ABE2, 10%);
+$dark-blue: darken($light-blue, 5%);
+$darker-blue: darken($light-blue, 10%);
 $sophisticated-white: #EEE;
 
 html {
@@ -14,14 +14,16 @@ html {
 		color: $sophisticated-white;
 
 		.form-container {
+			padding: 0 1rem;
 
 			h1 {
+				margin-bottom: 2.5rem;
 				font-size: 300;
 				color: $sophisticated-white;
 			}
 
 			form {
-				padding: 0 5rem;
+				padding: 0 1rem;
 				color: $sophisticated-white;
 
 				fieldset {
@@ -54,7 +56,9 @@ html {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-
+	html body .form-container form {
+		padding: 0 5rem;
+	}
 }
 
 // Large devices (desktops, 992px and up)
