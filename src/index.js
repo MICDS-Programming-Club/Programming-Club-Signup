@@ -1,18 +1,32 @@
-const port = 420;
+'use strict';
 
-const _ = require('underscore');
+/**
+ * @file Main file of the whole project.
+ */
+
+try {
+	var config = require(__dirname + '/libs/config.js');
+} catch(e) {
+	throw new Error('***PLEASE CREATE A CONFIG.JS ON YOUR LOCAL SYSTEM. REFER TO LIBS/CONFIG.EXAMPLE.JS***');
+}
+
+const port = config.port;
+
 const http = require('http');
-
 const express = require('express');
 const app = express();
 const server = http.Server(app);
 const io = require('socket.io')(server);
 
-const levelTypes = [
-	'beginner',
-	'intermediate',
-	'advanced'
-];
+/*
+ * Socket.io
+ */
+
+require(__dirname + '/libs/io.js')(io);
+
+/*
+ * Routes
+ */
 
 app.use('/', express.static(__dirname + '/public'));
 
@@ -20,23 +34,10 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/html/index.html');
 });
 
+/*
+ * Initialize Server
+ */
+
 server.listen(port, function() {
 	console.log('Server listening on *:' + port);
-});
-
-io.on('connection', function(socket) {
-	console.log('User connected!')
-
-	socket.on('signup', function(data) {
-		if(typeof data.email !== 'string' || data.email === '') {
-			socket.emit('signup response', false, 'Invalid email!');
-			return;
-		}
-		if(!_.contains(levelTypes, data.level)) {
-			socket.emit('signup response', false, 'Invalid programming level!');
-			return;
-		}
-
-		console.log('User signup!', data)
-	});
 });
