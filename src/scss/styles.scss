@@ -2,6 +2,7 @@ $light-blue: darken(#29ABE2, 10%);
 $dark-blue: darken($light-blue, 5%);
 $darker-blue: darken($light-blue, 10%);
 $sophisticated-white: #EEE;
+$warning-orange: gold;
 
 html {
 
@@ -14,16 +15,23 @@ html {
 		color: $sophisticated-white;
 
 		.form-container {
-			padding: 0 1rem;
+			max-width: 35rem;
+			padding: 0 2rem;
 
-			h1 {
+			.form-header {
 				margin-bottom: 2.5rem;
-				font-size: 300;
 				color: $sophisticated-white;
+
+				h1 {
+					font-weight: 600;
+				}
+
+				h3 {
+					font-weight: 300;
+				}
 			}
 
 			.signup-form {
-				padding: 0 1rem;
 				color: $sophisticated-white;
 
 				fieldset {
@@ -38,6 +46,12 @@ html {
 					.input-group-addon {
 						background-color: $darker-blue;
 						color: $sophisticated-white;
+					}
+
+					.signup-email-warning {
+						height: 0;
+						overflow-y: hidden;
+						color: $warning-orange;
 					}
 				}
 
@@ -56,9 +70,7 @@ html {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-	html body .form-container .signup-form {
-		padding: 0 5rem;
-	}
+
 }
 
 // Large devices (desktops, 992px and up)

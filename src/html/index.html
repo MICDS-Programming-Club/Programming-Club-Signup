@@ -11,14 +11,18 @@
 	</head>
 	<body>
 		<div class="form-container">
-			<h1><strong>MICDS Coding Club</strong> Signup</h1>
-			<form class="signup-form">
-				<fieldset>
+			<div class="form-header">
+				<h1>MICDS Coding Club</h1>
+				<h3>Signup</h3>
+			</div>
+			<form class="signup-form" novalidate>
+				<fieldset class="signup-email-fieldset">
 					<legend>Email</legend>
 					<div class="input-group">
-						<input class="form-control" name="email" required>
+						<input class="signup-email-input form-control form-control-danger form-control-warning" name="email" autocomplete="off" required>
 						<span class="input-group-addon">@micds.org</span>
 					</div>
+					<p class="signup-email-warning form-control-feedback">Please enter <strong>your MICDS school email.</strong> This typically does not contain numbers or weird symbols.</p>
 				</fieldset>
 				<fieldset>
 					<legend>I am a:</legend>
@@ -41,7 +45,7 @@
 						</label>
 					</div>
 				</fieldset>
-				<button class="btn btn-success btn-lg btn-block">Submit</button>
+				<button class="signup-submit btn btn-success btn-lg btn-block">Submit</button>
 				<p class="submit-info">You will recieve a follow-up email and an invite to our Slack group.</p>
 			</form>
 		</div>
@@ -49,6 +53,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 		<script src="/js/main.js"></script>
 	</body>
 </html>
