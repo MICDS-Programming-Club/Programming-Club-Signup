@@ -36,12 +36,25 @@ function signup(data, callback) {
 		callback(new Error('Invalid email!'));
 		return;
 	}
+	if(typeof data.firstName !== 'string' || data.firstName === '') {
+		callback(new Error('Invalid first name!'));
+		return;
+	}
+	if(typeof data.lastName !== 'string' || data.lastName === '') {
+		callback(new Error('Invalid last name!'));
+		return;
+	}
 	if(!_.contains(levelTypes, data.level)) {
 		callback(new Error('Invalid programming level!'));
 		return;
 	}
 
-	mail.sendHTML(data.email + '@micds.org', 'Programming Club', __dirname + '/../html/messages/programming-club.html', {}, function(err) {
+	var emailData = {
+		firstName: data.firstName,
+		lastName: data.lastName
+	};
+
+	mail.sendHTML(data.email + '@micds.org', 'Programming Club', __dirname + '/../html/messages/programming-club.html', emailData, function(err) {
 		if(err) {
 			callback(err);
 			return;
