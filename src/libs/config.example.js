@@ -15,9 +15,6 @@ module.exports =
 		fromName : 'MICDS Programming Club',
 	},
 	mongodbURI: '',
-	slack: {
-
-	},
 	treehouse: {
 		'email': '',
 		'password': ''

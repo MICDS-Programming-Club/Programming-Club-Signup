@@ -7,9 +7,10 @@
 
 const config = require(__dirname + '/config.js');
 
-const _     = require('underscore');
-const async = require('async');
-const mail  = require(__dirname + '/mail.js');
+const _       = require('underscore');
+const async   = require('async');
+const mail    = require(__dirname + '/mail.js');
+const request = require('request');
 
 const levelTypes = [
 	'beginner',
@@ -95,6 +96,7 @@ function signup(db, data, callback) {
 
 			});
 		},
+		// Send email
 		function(callback) {
 			mail.sendHTML(data.email + '@micds.org', 'Programming Club', __dirname + '/../html/messages/programming-club.html', emailData, function(err) {
 				if(err) {

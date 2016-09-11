@@ -2,7 +2,7 @@
 We've got big things planned for Programming Club this year, and we're glad you're interested!
 
 # Meeting
-Programming Club will usually meet for the full activities period every Day 6, but we can also communicate via an application called Slack. **You will receive another email with an invite to our Slack group shortly.** Slack is basically like Skype or Discord, which allows us to work on projects together outside of class.
+Programming Club will usually meet for the full activities period every Day 6, but we can also communicate via an application called Slack. [Please click here to sign into our Slack group.](http://micdsprogrammingclub.slack.com/) Slack is basically like Skype or Discord, which allows us to work on projects together outside of class.
 
 # Projects We have in Mind
 
