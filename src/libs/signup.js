@@ -122,7 +122,8 @@ function signup(db, data, callback) {
 			}, function(err, response, body) {
 				body = JSON.parse(body);
 
-				if(err || !body || !body.ok) {
+				if(err || !body || (!body.ok && body.error !== 'already_invited')) {
+					console.log(body)
 					callback(new Error('There was a problem inviting the user to the Slack group!'));
 					return;
 				}

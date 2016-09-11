@@ -1,5 +1,7 @@
 var socket = io();
 
+var $html = $('html');
+
 var form = document.getElementsByClassName('signup-form')[0];
 var $form = $('form');
 var $submitForm = $('.signup-submit');
@@ -15,6 +17,14 @@ var $lastName = $('.signup-lastName-input');
 var $gradYear = $('.signup-gradYear-input');
 var gradYears = getGradeRange();
 
+var $loading = $('.signup-loading');
+var $loadingMessage = $('.loading-message');
+
+// As soon as Javascript executes, loading sign will hide
+// It's not a bug, it's a "feature"
+$loading.hide();
+
+// Do form validation logic
 function validateForm() {
 	if($emailInput.val().length > 0) {
 		// Email input has text
@@ -41,6 +51,7 @@ function validateForm() {
 	}
 }
 
+// Get graduation years of everyone in highschool
 function getGradeRange() {
 	var years = [];
 	var currentYear = new Date().getFullYear();
@@ -59,6 +70,7 @@ for(var i = 0; i < gradYears.length; i++) {
 	$gradYear.append('<option value=' + gradYears[i] + '>Class of ' + gradYears[i] + '</option>');
 }
 
+// Validate form if any of the inputs are changed
 validateForm();
 $emailInput.on('change keyup paste', validateForm);
 $firstName.on('change keyup paste', validateForm);
@@ -67,6 +79,7 @@ $lastName.on('change keyup paste', validateForm);
 $form.submit(function(event) {
 	event.preventDefault();
 
+	// Loop through form and convert to object
 	var data = $(this).serializeArray();
 	var formData = {};
 	for(var i = 0; i < data.length; i++) {
@@ -77,14 +90,40 @@ $form.submit(function(event) {
 		formData[formInput.name] = formInput.value;
 	}
 
+	// Send form data to server
 	socket.emit('signup', formData);
 	console.log(formData);
 
-	// Reset form data for next user
-	form.reset();
-	validateForm();
+	// Scroll to top of page
+	$('html, body').animate({
+		scrollTop: $html.offset().top,
+	}, 600, 'easeInOutCirc');
+
+	// Show loading message
+	$loadingMessage.text('Signing you up...');
+	$loading.fadeIn(600);
 });
 
+// When we receive response from server after submitting form
 socket.on('signup response', function(success, message) {
 	console.log(success, message);
+
+	// If error, show message
+	if(!success) {
+		$loadingMessage.text('Uh oh... Something bad happened. Please try registering again.');
+		setTimeout(function() {
+			$loading.fadeOut(600);
+		}, 3000);
+		return;
+	}
+
+	// Reset form because student already registered
+	form.reset();
+	validateForm();
+
+	// Show success message
+	$loadingMessage.text('Thanks for registering!');
+	setTimeout(function() {
+		$loading.fadeOut(600);
+	}, 1500);
 });
