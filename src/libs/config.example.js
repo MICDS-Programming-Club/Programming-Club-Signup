@@ -17,5 +17,9 @@ module.exports =
 	mongodbURI: '',
 	slack: {
 
+	},
+	treehouse: {
+		'email': '',
+		'password': ''
 	}
 }

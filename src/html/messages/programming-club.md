@@ -18,5 +18,14 @@ Outside of our own club, we can participate in public hackathons hosted by other
 ### Work on MyMICDS.net
 We can improve on our web development skills by developing and maintaining features for [MyMICDS.net](https://mymicds.net), a website aimed at gathering all the information you need into one place. You can input your schedule, view the lunch, use the digital planner, and more! This is a perfect opportunity for us to ~~exploit free child labor~~ practice our skills on a website people actually use!
 
+# How to Learn
+This year, we are probably going to be working with node.js and Python, possibly web development with HTML, CSS, and JavaScript. There are lots of resources out there, but here are a few that we recommend:
+
+### Codecademy
+[Codecademy.com](https://www.codecademy.com/) teaches a lot of languages, with interactive coding challenges. You are able to create an account for free!
+
+### Treehouse
+[TeamTreehouse.com](https://teamtreehouse.com/home) offers a variety of courses created by expert teachers on web design, coding, business, and much more. You watch a series of videos and take quizzes and coding challenges to take after watching these videos. **Treehouse required you to pay for an account, but we have a shared group account that Michael Gira pays for. (Username = '{{treehouseEmail}}', Password = '{{treehousePassword}}')**
+
 # Contact
 If you got any questions, comments, or concerns, you can contact club sponsor **Dr. Gaw (jgaw@micds.org)** or club co-heads **Bob Sforza (bsforza@micds.org)** or **Michael Gira (mgira@micds.org)**.

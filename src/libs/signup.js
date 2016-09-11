@@ -5,6 +5,8 @@
  * @module signup
  */
 
+const config = require(__dirname + '/config.js');
+
 const _    = require('underscore');
 const mail = require(__dirname + '/mail.js');
 
@@ -51,7 +53,9 @@ function signup(data, callback) {
 
 	var emailData = {
 		firstName: data.firstName,
-		lastName: data.lastName
+		lastName: data.lastName,
+		treehouseEmail: config.treehouse.email,
+		treehousePassword: config.treehouse.password
 	};
 
 	mail.sendHTML(data.email + '@micds.org', 'Programming Club', __dirname + '/../html/messages/programming-club.html', emailData, function(err) {
