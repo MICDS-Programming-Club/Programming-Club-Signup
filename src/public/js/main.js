@@ -8,12 +8,17 @@ var $emailFieldset = $('.signup-email-fieldset');
 var $emailInput = $('.signup-email-input');
 var $emailWarning = $('.signup-email-warning');
 
+var $firstName = $('.signup-firstName-input');
+var $lastName = $('.signup-lastName-input');
+
 var emailHeight = $emailWarning.height();
 
 function validateForm() {
 	if($emailInput.val().length > 0) {
 		// Email input has text
-		$submitForm.prop('disabled', false);
+		if($firstName.val().length > 0 && $lastName.val().length > 0) {
+			$submitForm.prop('disabled', false);
+		}
 
 		// Test if string is alphabetic
 		if(/^[A-Za-z]+$/.test($emailInput.val())) {
@@ -36,6 +41,8 @@ function validateForm() {
 
 validateForm();
 $emailInput.on('change keyup paste', validateForm);
+$firstName.on('change keyup paste', validateForm);
+$lastName.on('change keyup paste', validateForm);
 
 $form.submit(function(event) {
 	event.preventDefault();

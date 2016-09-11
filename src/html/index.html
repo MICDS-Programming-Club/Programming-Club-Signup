@@ -12,8 +12,8 @@
 	<body>
 		<div class="form-container">
 			<div class="form-header">
-				<h1>MICDS Coding Club</h1>
-				<h3>Signup</h3>
+				<h3>MICDS Programming Club</h3>
+				<h1>Signup</h1>
 			</div>
 			<form class="signup-form" novalidate>
 				<fieldset class="signup-email-fieldset">
@@ -25,23 +25,31 @@
 					<p class="signup-email-warning form-control-feedback">Please enter <strong>your MICDS school email.</strong> This typically does not contain numbers or weird symbols.</p>
 				</fieldset>
 				<fieldset>
+					<legend>Full Name</legend>
+					<input class="signup-firstName-input form-control" name="firstName" placeholder="First Name" required>
+					<input class="signup-lastName-input form-control" name="lastName" placeholder="Last Name" required>
+				</fieldset>
+				<fieldset class="signup-level-fieldset">
 					<legend>I am a:</legend>
-					<div class="form-check">
+					<div class="signup-level-input form-check">
 						<label class="form-check-label">
 							<input type="radio" class="form-check-input" name="level" value="beginner" checked>
-							<strong>Beginner</strong> I'm just interested in programming.
+							<strong>Beginner</strong>
+							<span>I'm just interested in programming.</span>
 						</label>
 					</div>
-					<div class="form-check">
+					<div class="signup-level-input form-check">
 						<label class="form-check-label">
 							<input type="radio" class="form-check-input" name="level" value="intermediate">
-							<strong>Intermediate</strong> I know the basics of programming.
+							<strong>Intermediate</strong>
+							<span>I know the basics of programming.</span>
 						</label>
 					</div>
-					<div class="form-check">
+					<div class="signup-level-input form-check">
 						<label class="form-check-label">
 							<input type="radio" class="form-check-input" name="level" value="advanced">
-							<strong>Advanced</strong> I feel confident programming in one or more languages.
+							<strong>Advanced</strong>
+							<span>I feel confident programming in one or more languages.</span>
 						</label>
 					</div>
 				</fieldset>
