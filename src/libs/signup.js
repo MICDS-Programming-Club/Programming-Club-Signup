@@ -107,6 +107,27 @@ function signup(db, data, callback) {
 				callback(null);
 
 			});
+		},
+		// Invite to Slack group
+		function(callback) {
+			request({
+				url: 'https://' + config.slack.group + '.slack.com/api/users.admin.invite',
+				method: 'POST',
+				form: {
+					email: data.email + '@micds.org',
+					token: config.slack.token
+				}
+			}, function(err, response, body) {
+				body = JSON.parse(body);
+
+				if(err || !body || !body.ok) {
+					callback(new Error('There was a problem inviting the user to the Slack group!'));
+					return;
+				}
+
+				callback(null);
+
+			});
 		}
 	], function(err, results) {
 		if(err) {
