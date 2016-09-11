@@ -16,7 +16,8 @@ module.exports =
 	},
 	slack: {
 		group: '',
-		token: ''
+		token: '',
+		announceChannel: ''
 	},
 	mongodbURI: '',
 	treehouse: {

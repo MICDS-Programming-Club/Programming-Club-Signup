@@ -47,6 +47,8 @@ function signup(db, data, callback) {
 	if(typeof data.email !== 'string' || data.email === '') {
 		callback(new Error('Invalid email!'));
 		return;
+	} else {
+		data.email = data.email.toLowerCase();
 	}
 	if(typeof data.firstName !== 'string' || data.firstName === '') {
 		callback(new Error('Invalid first name!'));
@@ -86,7 +88,7 @@ function signup(db, data, callback) {
 		function(callback) {
 			var programmerData = db.collection('programmers');
 
-			programmerData.update({ programmer: newProgrammer.programmer }, newProgrammer, { upsert: true }, function(err, results) {
+			programmerData.update({ programmer: data.email }, newProgrammer, { upsert: true }, function(err, results) {
 				if(err) {
 					callback(new Error('There was a problem inserting the student into the database!'));
 					return;
@@ -136,6 +138,17 @@ function signup(db, data, callback) {
 		}
 
 		callback(null);
+
+		// Send a message to Slack chat to celebrate!
+		request({
+			url: 'https://' + config.slack.group + '.slack.com/api/chat.postMessage',
+			method: 'POST',
+			form: {
+				token: config.slack.token,
+				channel: config.slack.announceChannel,
+				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just registered for the Programming Club! An invitation has been sent to *' + data.email + '@micds.org*. This person has described their skill level at *' + data.level + '*.'
+			}
+		});
 
 	});
 }
