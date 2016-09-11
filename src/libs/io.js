@@ -9,7 +9,6 @@ const signup = require(__dirname + '/signup.js');
 
 module.exports = function(io, db) {
 	io.on('connection', function(socket) {
-		console.log('User connected!')
 
 		socket.on('signup', function(data) {
 			signup.signup(db, data, function(err) {
