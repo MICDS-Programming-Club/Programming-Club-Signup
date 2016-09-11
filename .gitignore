@@ -1,5 +1,5 @@
 node_modules
 npm-debug.log
 
-src/config.js
+config.js
 src/public/css
