@@ -7,12 +7,12 @@
 
 const signup = require(__dirname + '/signup.js');
 
-module.exports = function(io) {
+module.exports = function(io, db) {
 	io.on('connection', function(socket) {
 		console.log('User connected!')
 
 		socket.on('signup', function(data) {
-			signup.signup(data, function(err) {
+			signup.signup(db, data, function(err) {
 				if(err) {
 					socket.emit('signup response', false, err.message);
 					return;

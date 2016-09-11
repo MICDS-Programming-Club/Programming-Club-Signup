@@ -18,11 +18,21 @@ const app = express();
 const server = http.Server(app);
 const io = require('socket.io')(server);
 
+const MongoClient = require('mongodb').MongoClient;
+
 /*
- * Socket.io
+ * Connect to Database
  */
 
-require(__dirname + '/libs/io.js')(io);
+MongoClient.connect(config.mongodbURI, function(err, db) {
+	if(err) throw err;
+
+	/*
+	 * Socket.io
+	 */
+
+	require(__dirname + '/libs/io.js')(io, db);
+});
 
 /*
  * Routes
