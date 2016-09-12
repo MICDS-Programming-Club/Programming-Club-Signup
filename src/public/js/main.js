@@ -1,9 +1,7 @@
-var socket = io();
-
 var $html = $('html');
 
-var form = document.getElementsByClassName('signup-form')[0];
 var $form = $('form');
+var form = $form.get(0);
 var $submitForm = $('.signup-submit');
 
 var $emailFieldset = $('.signup-email-fieldset');
@@ -79,21 +77,6 @@ $lastName.on('change keyup paste', validateForm);
 $form.submit(function(event) {
 	event.preventDefault();
 
-	// Loop through form and convert to object
-	var data = $(this).serializeArray();
-	var formData = {};
-	for(var i = 0; i < data.length; i++) {
-		var formInput = data[i];
-		if(formInput.name === 'gradYear') {
-			formInput.value = parseInt(formInput.value);
-		}
-		formData[formInput.name] = formInput.value;
-	}
-
-	// Send form data to server
-	socket.emit('signup', formData);
-	console.log(formData);
-
 	// Scroll to top of page
 	$('html, body').animate({
 		scrollTop: $html.offset().top,
@@ -102,28 +85,26 @@ $form.submit(function(event) {
 	// Show loading message
 	$loadingMessage.text('Signing you up...');
 	$loading.fadeIn(600);
-});
 
-// When we receive response from server after submitting form
-socket.on('signup response', function(success, message) {
-	console.log(success, message);
+	// Send POST request
+	$.post('/signup', $(this).serialize(), function(data) {
+		// If error, show message
+		if(data.error) {
+			$loadingMessage.text('Uh oh... Something bad happened. Please try registering again.');
+			setTimeout(function() {
+				$loading.fadeOut(600);
+			}, 3000);
+			return;
+		}
 
-	// If error, show message
-	if(!success) {
-		$loadingMessage.text('Uh oh... Something bad happened. Please try registering again.');
+		// Reset form because student already registered
+		form.reset();
+		validateForm();
+
+		// Show success message
+		$loadingMessage.text('Thanks for registering!');
 		setTimeout(function() {
 			$loading.fadeOut(600);
-		}, 3000);
-		return;
-	}
-
-	// Reset form because student already registered
-	form.reset();
-	validateForm();
-
-	// Show success message
-	$loadingMessage.text('Thanks for registering!');
-	setTimeout(function() {
-		$loading.fadeOut(600);
-	}, 1500);
+		}, 1500);
+	});
 });

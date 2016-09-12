@@ -12,13 +12,27 @@ try {
 
 const port = config.port;
 
-const http = require('http');
 const express = require('express');
 const app = express();
-const server = http.Server(app);
-const io = require('socket.io')(server);
 
+const bodyParser = require('body-parser');
+const signup = require(__dirname + '/libs/signup.js');
 const MongoClient = require('mongodb').MongoClient;
+
+/*
+ * Routes and Middleware
+ */
+
+// Parse POST variables
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Serve static assets
+app.use('/', express.static(__dirname + '/public'));
+
+// Default index.html
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/html/index.html');
+});
 
 /*
  * Connect to Database
@@ -27,27 +41,26 @@ const MongoClient = require('mongodb').MongoClient;
 MongoClient.connect(config.mongodbURI, function(err, db) {
 	if(err) throw err;
 
-	/*
-	 * Socket.io
-	 */
+	// Signup API Route
+	app.post('/signup', function(req, res) {
 
-	require(__dirname + '/libs/io.js')(io, db);
-});
+		// Convert graduation year to int
+		req.body.gradYear = parseInt(req.body.gradYear);
 
-/*
- * Routes
- */
-
-app.use('/', express.static(__dirname + '/public'));
-
-app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/html/index.html');
+		signup.signup(db, req.body, function(err) {
+			let errorMessage = null;
+			if(err) {
+				errorMessage = err.message;
+			}
+			res.json({ error: errorMessage });
+		});
+	});
 });
 
 /*
  * Initialize Server
  */
 
-server.listen(port, function() {
+app.listen(port, function() {
 	console.log('Server listening on *:' + port);
 });
