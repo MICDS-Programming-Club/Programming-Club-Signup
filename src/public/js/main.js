@@ -106,5 +106,11 @@ $form.submit(function(event) {
 		setTimeout(function() {
 			$loading.fadeOut(600);
 		}, 1500);
-	});
+	})
+		.fail(function() {
+			$loadingMessage.text('Uh oh... Something bad happened. Please try registering again.');
+			setTimeout(function() {
+				$loading.fadeOut(600);
+			}, 3000);
+		});
 });
