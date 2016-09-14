@@ -7,7 +7,7 @@ Programming Club will usually meet for the full activities period every Day 6, b
 # Projects We have in Mind
 
 ### Play around with drones
-Each member able to receive multiple [free Crazyflie 2.0 drones](https://www.bitcraze.io/crazyflie-2/), which we can use for our own ~~malicious~~ completely educational purposes. This could include programming an autonomous drone swarm to do our bidding.</p>
+Each member is able to receive multiple [free Crazyflie 2.0 drones](https://www.bitcraze.io/crazyflie-2/), which we can use for our own ~~malicious~~ completely educational purposes. This could include programming an autonomous drone swarm to do our bidding.</p>
 
 ### Inner-team Mini Hackathon Series / Competition
 A hackathon is basically a coding competition. We could divide into teams and have competitions to create a product revolving around a certain theme.
