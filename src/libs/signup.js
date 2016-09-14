@@ -139,7 +139,6 @@ function signup(db, data, callback) {
 		}
 
 		callback(null);
-		return;
 
 		// Send a message to Slack chat to celebrate!
 		request({

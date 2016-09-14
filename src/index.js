@@ -43,7 +43,6 @@ MongoClient.connect(config.mongodbURI, function(err, db) {
 
 	// Signup API Route
 	app.post('/signup', function(req, res) {
-		console.log('signup')
 
 		// Convert graduation year to int
 		req.body.gradYear = parseInt(req.body.gradYear);
