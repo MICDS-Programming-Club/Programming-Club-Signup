@@ -17,7 +17,8 @@ module.exports =
 	slack: {
 		group: '',
 		token: '',
-		announceChannel: ''
+		announceChannel: '',
+		pm: ''
 	},
 	mongodbURI: '',
 	treehouse: {
