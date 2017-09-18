@@ -55,6 +55,18 @@ MongoClient.connect(config.mongodbURI, function(err, db) {
 			res.json({ error: errorMessage });
 		});
 	});
+
+	// ;(
+	app.get('/leave/:programmer', function(req, res) {
+		const programmer = req.params.programmer;
+		signup.remove(db, programmer, function(err) {
+			if(err) {
+				res.sendFile(__dirname + '/html/error.html');
+			} else {
+				res.sendFile(__dirname + '/html/leave.html');
+			}
+		});
+	});
 });
 
 /*

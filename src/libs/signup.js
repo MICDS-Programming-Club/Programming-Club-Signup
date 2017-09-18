@@ -22,6 +22,7 @@ const levelTypes = [
  * Sign a user up for the programming club
  * @function signup
  *
+ * @param {Object} db - Database connection
  * @param {Object} data - Data about user
  * @param {string} data.email - Users's school email (ends with @micds.org)
  * @param {string} data.level - User's programming level ('beginner'|'intermediate'|'advanced')
@@ -151,11 +152,70 @@ function signup(db, data, callback) {
 			form: {
 				token: config.slack.token,
 				channel: config.slack.announceChannel,
-				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just registered for the Programming Club! An invitation has been sent to *' + data.email + '@micds.org*. This person has described their skill level at *' + data.level + '*.'
+				text: '*' + data.firstName + ' ' + data.lastName + ' (' + data.gradYear + ')* just registered for the Programming Club! An invitation has been sent to *' + data.email + '@micds.org*. This person has described their skill level as *' + data.level + '*.'
 			}
 		});
 
 	});
 }
 
+/**
+ * Removes user from the club
+ * @param {Object} db - Database connection
+ * @param {string} user
+ * @param {removeUserCallback} callback - Callback
+ */
+
+/**
+ * Returns error if any
+ * @callback {removeUserCallback}
+ * @param {Object} err - Null if success, error object if failure.
+ */
+
+function removeUser(db, user, callback) {
+	if (typeof callback !== 'function') {
+		callback = function() {};
+	}
+
+	if (typeof db !== 'object') {
+		callback(new Error('Invalid database connection!'));
+		return;
+	}
+
+	if (typeof user !== 'string') {
+		callback(new Error('Invalid user!'));
+		return;
+	}
+
+	var programmerData = db.collection('programmers');
+	programmerData.remove({ programmer: user }, function(err, results) {
+		if (err) {
+			callback(err);
+			return;
+		}
+
+		console.log(results);
+
+		if (results.result.n <= 0) {
+			// We didn't actually delete anybody
+			callback(null);
+		} else {
+			// Alert the coheads
+			request({
+				url: 'https://' + config.slack.group + '.slack.com/api/chat.postMessage',
+				method: 'POST',
+				form: {
+					token: config.slack.token,
+					channel: config.slack.pm,
+					text: '*' + user + '@micds.org just left Programming Club ;(*'
+				}
+			},
+			function(err) {
+				callback(null);
+			});
+		}
+	});
+}
+
 module.exports.signup = signup;
+module.exports.remove = removeUser;

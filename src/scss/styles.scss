@@ -1,7 +1,7 @@
-$light-blue: darken(#29ABE2, 10%);
-$dark-blue: darken($light-blue, 5%);
-$darker-blue: darken($light-blue, 10%);
-$sophisticated-white: #EEE;
+$background: #bcbbb6;
+$primary: #d12229;
+$secondary: #581021;
+$sophisticated-white: #eee;
 $warning-orange: gold;
 
 html {
@@ -10,7 +10,7 @@ html {
 		justify-content: center;
 		padding-top: 2.5rem;
 
-		background-color: #29ABE2;
+		background-color: $background;
 		color: $sophisticated-white;
 
 		.signup-loading {
@@ -41,13 +41,12 @@ html {
 			padding: 0 2rem;
 
 			.form-header {
-				margin-bottom: 2.5rem;
-				color: $sophisticated-white;
+				margin-bottom: 5rem;
+				color: $secondary;
 				text-align: center;
 
 				h3 {
-					font-family: monospace;
-					font-weight: 300;
+					margin-bottom: 2.5rem;
 				}
 
 				h1 {
@@ -60,7 +59,7 @@ html {
 			.signup-info {
 				margin-bottom: 2rem;
 				padding: 1rem;
-				background-color: $dark-blue;
+				background-color: $primary;
 
 				h1 {
 					margin-bottom: 1rem;
@@ -70,10 +69,6 @@ html {
 				div {
 					h3 {
 						font-weight: 600;
-					}
-
-					p {
-
 					}
 				}
 			}
@@ -85,20 +80,28 @@ html {
 					margin-bottom: 2rem;
 					color: $sophisticated-white;
 
+					legend {
+						color: $primary;
+					}
+
 					.form-control {
-						background-color: $dark-blue;
+						background-color: $primary;
 						color: $sophisticated-white;
+
+						&::placeholder {
+							color: $sophisticated-white;
+						}
 					}
 
 					.input-group-addon {
-						background-color: $darker-blue;
+						background-color: $secondary;
 						color: $sophisticated-white;
 					}
 
 					&.signup-email-fieldset .signup-email-warning {
 						height: 0;
 						overflow-y: hidden;
-						color: $warning-orange;
+						color: $secondary;
 					}
 
 					&.signup-level-fieldset .signup-level-input .form-check-label {
@@ -106,19 +109,24 @@ html {
 						align-items: flex-start;
 						flex-direction: column;
 
+						color: $primary;
+
 						input {
 							margin-top: 0.6rem;
+							color: $sophisticated-white;
 						}
 
 						strong {
-							font-size: 1.25rem;
 							margin-right: 0.5rem;
+							font-size: 1.25rem;
+							color: $secondary
 						}
 					}
 				}
 
 				.submit-info {
 					text-align: center;
+					color: $secondary;
 				}
 			}
 		}
