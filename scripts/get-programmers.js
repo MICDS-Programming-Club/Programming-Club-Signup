@@ -5,7 +5,7 @@
  */
 
 try {
-	var config = require(__dirname + '/config.js');
+	var config = require(__dirname + '/../src/libs/config.js');
 } catch(e) {
 	throw new Error('***PLEASE CREATE A CONFIG.JS ON YOUR LOCAL SYSTEM. REFER TO LIBS/CONFIG.EXAMPLE.JS***');
 }
@@ -29,6 +29,7 @@ MongoClient.connect(config.mongodbURI, function(err, db) {
 
 		fs.writeFile('programmers.txt', string, function(err) {
 			if(err) throw err;
+			console.log('Success! Wrote all club members to programmers.txt');
 			process.exit();
 		});
 	});
